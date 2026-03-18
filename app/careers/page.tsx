@@ -2,9 +2,8 @@ export default function CareersPage() {
   const formLink =
     "https://docs.google.com/forms/d/e/1FAIpQLSf0LUCcXhEC1SKWkEWlsmMKnOmUlhNoBzA1CRrPCCIzMDSeZw/viewform";
 
-  const whatsappLink =
-    "https://wa.me/918802805667?text=Hi,%20I%20want%20to%20apply%20for%20a%20position%20at%20P.K.%20Lakhani%20%26%20Co.";
-
+  const message = encodeURIComponent("Hi, I want to apply at P.K. Lakhani & Co.")
+  const whatsappLink = `https://wa.me/918802805667?text=${message}`
   return (
     <main className="max-w-4xl mx-auto p-10">
       <h1 className="text-3xl font-semibold text-gray-900">
