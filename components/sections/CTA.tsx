@@ -1,34 +1,43 @@
+import Section from "@/components/ui/Section";
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+
 export default function CTA() {
   return (
-    <section className="py-20 bg-gray-900 text-white">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        
-        <h2 className="text-2xl md:text-3xl font-semibold">
-          Need Assistance with Audit or Compliance?
-        </h2>
+    <Section dark>
+      <Container size="sm">
 
-        <p className="mt-4 text-gray-400">
-          Connect with our team to discuss your requirements.
-        </p>
+        <div className="text-center max-w-2xl mx-auto">
 
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          
-          <a
-            href="https://wa.me/918802805667"
-            target="_blank"
-            className="bg-green-600 px-6 py-3 rounded-md text-sm hover:bg-green-700 transition"
-          >
-            WhatsApp
-          </a>
+          <h2 className="heading heading-accent text-3xl md:text-4xl">
+            Need Assistance with Audit or Compliance?
+          </h2>
 
-          <a
-            href="tel:+918802805667"
-            className="border border-gray-600 px-6 py-3 rounded-md text-sm hover:border-white transition"
-          >
-            Call
-          </a>
+          <p className="mt-4 text-gray-300 leading-relaxed">
+            Connect with our team to discuss your requirements.
+          </p>
+
+          <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
+
+            <Button
+              href="https://wa.me/918802805667"
+              target="_blank"
+            >
+              WhatsApp
+            </Button>
+
+            <Button
+              href="tel:+91981115617"
+              variant="secondary-dark"
+            >
+              Call
+            </Button>
+
+          </div>
+
         </div>
-      </div>
-    </section>
+
+      </Container>
+    </Section>
   );
 }

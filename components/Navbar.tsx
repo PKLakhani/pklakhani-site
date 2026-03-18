@@ -1,60 +1,127 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import Container from "@/components/ui/Container";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
-    <nav className="border-b bg-white sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        
-        {/* Left: Brand */}
-        <div className="flex flex-col leading-tight">
-          <span className="font-semibold text-base tracking-tight">
-            P.K. Lakhani & Co.
-          </span>
-          <span className="text-xs text-gray-500">
-            Chartered Accountants • Since 1994
-          </span>
-        </div>
+    <nav className="bg-[#0B1F3A] text-white sticky top-0 z-50 border-b border-white/10">
+      <Container>
+        <div className="h-16 flex items-center justify-between">
 
-        {/* Center: Navigation */}
-        <div className="hidden md:flex items-center gap-8 text-sm text-gray-700">
-          <Link href="/" className="hover:text-black transition">
-            Home
+          {/* Brand */}
+          <Link href="/" className="flex flex-col leading-tight">
+            <span className="font-semibold tracking-tight text-base">
+              P.K. Lakhani <span className="text-[#C9A14A]">& Co.</span>
+            </span>
+            <span className="text-xs text-gray-300">
+              Chartered Accountants • Since 1994
+            </span>
           </Link>
-          <Link href="/about" className="hover:text-black transition">
-            About
-          </Link>
-          <Link href="/services" className="hover:text-black transition">
-            Services
-          </Link>
-          <Link href="/careers" className="hover:text-black transition">
-            Careers
-          </Link>
-          <Link href="/contact" className="hover:text-black transition">
-            Contact
-          </Link>
-        </div>
 
-        {/* Right: CTA */}
-        <div className="flex items-center gap-3">
-          
-          {/* Call */}
-          <a
-            href="tel:+918802805667"
-            className="hidden sm:inline text-sm text-gray-700 hover:text-black"
-          >
-            Call
-          </a>
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8 text-sm">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
 
-          {/* WhatsApp Primary CTA */}
-          <a
-            href="https://wa.me/918802805667"
-            target="_blank"
-            className="bg-green-600 text-white text-sm px-4 py-2 rounded-md hover:bg-green-700 transition"
-          >
-            WhatsApp
-          </a>
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition ${
+                    isActive
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* Right CTA + Mobile Toggle */}
+          <div className="flex items-center gap-4">
+
+            {/* Call */}
+            <a
+              href="tel:+91981115617"
+              className="hidden sm:inline text-sm text-gray-300 hover:text-white"
+            >
+              Call
+            </a>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/918802805667"
+              target="_blank"
+              className="bg-green-600 text-white text-sm px-4 py-2 rounded-md"
+            >
+              WhatsApp
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden text-white text-xl"
+              onClick={() => setOpen(!open)}
+            >
+              ☰
+            </button>
+          </div>
         </div>
-      </div>
+      </Container>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-[#0B1F3A] border-t border-white/10">
+          <div className="px-6 py-4 space-y-4 text-sm">
+
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block text-gray-300 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Divider */}
+            <div className="border-t border-white/10 pt-4 space-y-3">
+
+              <a
+                href="tel:+91981115617"
+                className="block text-gray-300"
+              >
+                Call
+              </a>
+
+              <a
+                href="mailto:pradeep.lakhani@gmail.com"
+                className="block text-gray-300"
+              >
+                Email
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

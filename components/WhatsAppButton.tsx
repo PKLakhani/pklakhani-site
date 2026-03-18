@@ -9,9 +9,9 @@ export default function WhatsAppButton({
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg transition"
+      className="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-full shadow-xl hover:bg-green-700 hover:scale-105 transition"
     >
-      WhatsApp
+      Chat with CA
     </a>
   );
 }
