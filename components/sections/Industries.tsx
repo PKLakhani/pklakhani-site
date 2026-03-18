@@ -1,30 +1,30 @@
 const industries = [
   "Automobiles",
-  "Oil & Gas",
   "Information Technology",
-  "Media & Entertainment",
   "Real Estate",
-  "Financial Sector",
-  "Telecom",
+  "Financial Services",
   "Hospitality",
-  "Agri Sector",
-  "Electricals",
-  "Power",
+  "Manufacturing",
+  "Telecom",
 ];
 
 export default function Industries() {
   return (
-    <section className="py-16">
+    <section className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl font-semibold text-center mb-10">
+        
+        <h2 className="text-2xl md:text-3xl font-semibold text-center text-gray-900 mb-12">
           Industries We Serve
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div className="flex flex-wrap justify-center gap-4">
           {industries.map((item) => (
-            <div key={item} className="border p-4 rounded-lg">
+            <span
+              key={item}
+              className="text-sm px-4 py-2 border border-gray-300 rounded-full text-gray-700"
+            >
               {item}
-            </div>
+            </span>
           ))}
         </div>
       </div>
